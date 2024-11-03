@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Lectura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMGzT6Zy48hs44cKXTx2e8i/W+T8D7MlIgFJlK" crossorigin="anonymous">
+    <style>
+        /* Estilos generales para el cuerpo de la página */
+        body {
+            font-family: 'Nunito', sans-serif; /* Fuente personalizada */
+            background-color: #f0f8ff; /* Color de fondo */
+            display: flex; /* Usar Flexbox para centrar el contenido */
+            flex-direction: column; /* Orientar los elementos en columna */
+            align-items: center; /* Centrar horizontalmente */
+            justify-content: center; /* Centrar verticalmente */
+            height: 100vh; /* Altura del 100% de la ventana del navegador */
+            margin: 0; /* Eliminar margen */
+            color: #333; /* Color del texto */
+        }
+
+        /* Contenedor principal del juego */
+        .container {
+            width: 90%; /* Ancho del contenedor */
+            max-width: 600px; /* Ancho máximo */
+            background: #fff; /* Color de fondo blanco */
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
+            padding: 30px; /* Espaciado interno */
+            text-align: center; /* Alinear texto al centro */
+        }
+
+        .story {
+            font-size: 1.5em; /* Aumenta el tamaño de la fuente de la historia */
+            margin-bottom: 30px; /* Añade espacio inferior para separar de los botones */
+            color: #333; /* Color del texto */
+        }
+
+
+        /* Estilos para el título de la historia */
+        .story-title {
+            font-size: 2em; /* Tamaño de fuente del título */
+            margin-bottom: 15px; /* Espaciado inferior */
+            color: #00796b; /* Color verde oscuro */
+        }
+
+        /* Estilos para la descripción de la historia */
+        .story-description {
+            font-size: 1.0em; /* Tamaño de fuente de la descripción */
+            margin-bottom: 15px; /* Espaciado inferior */
+            color: #555; /* Color gris oscuro */
+            font-style: italic; /* Hacer la fuente en cursiva */
+        }
+
+
+        /* Estilos para las opciones de respuesta */
+        /* Estilos para las opciones de respuesta */
+        /* Estilos para las opciones de respuesta */
+        .options {
+            display: flex; /* Usar Flexbox para alinear botones */
+            justify-content: space-around; /* Espacio entre botones */
+            margin-bottom: 30px; /* Espaciado inferior */
+            margin-top: 30px; /* Añadir espacio arriba del contenedor de botones */
+            background-color: #005a66; /* Color de fondo azul claro para resaltar */
+            padding: 20px; /* Añadir espaciado interno */
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra del contenedor de opciones */
+        }
+
+        /* Estilos para cada botón de opción */
+        .option-btn {
+            width: 100px; /* Aumentar ancho del botón */
+            height: 100px; /* Aumentar altura del botón */
+            border: none; /* Sin borde */
+            border-radius: 20px; /* Bordes redondeados */
+            background-color: #4caf50; /* Color de fondo verde vibrante */
+            color: white; /* Color del texto/emojis */
+            cursor: pointer; /* Cambiar cursor al pasar el ratón */
+            font-size: 3em; /* Aumentar tamaño de fuente */
+            display: flex; /* Para centrar el emoji */
+            align-items: center; /* Alinear verticalmente */
+            justify-content: center; /* Alinear horizontalmente */
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Transiciones */
+        }
+
+        .option-btn:hover {
+            transform: scale(1.1); /* Aumentar tamaño al pasar el ratón */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa al hacer hover */
+            background-color: #388e3c; /* Color más oscuro al hacer hover */
+        }
+
+        /* Estilos para los botones de verificar y siguiente */
+        .verify-btn, .next-btn {
+            background-color: #4CAF50; /* Color de fondo */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            padding: 15px 30px; /* Espaciado interno */
+            border-radius: 10px; /* Bordes redondeados */
+            cursor: pointer; /* Cambiar cursor al pasar el ratón */
+            font-size: 1.5em; /* Tamaño de fuente */
+            transition: background-color 0.3s, transform 0.3s; /* Transición de color de fondo */
+        }
+
+        .verify-btn:hover, .next-btn:hover {
+            background-color: #45a049; /* Color de fondo al pasar el ratón */
+            transform: translateY(-3px); /* Efecto de elevar el botón */
+        }
+
+        .hidden {
+            display: none; /* Ocultar elementos */
+        }
+
+        .options {
+            display: flex; /* Usar Flexbox para alinear botones */
+            justify-content: space-around; /* Espacio entre botones */
+            margin-bottom: 20px; /* Espaciado inferior */
+            margin-top: 30px; /* Añadir espacio arriba del contenedor de botones */
+        }
+
+        .verify-btn, .next-btn {
+            background-color: #4CAF50; /* Color de fondo */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            padding: 10px 20px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambiar cursor al pasar el ratón */
+            font-size: 1em; /* Tamaño de fuente */
+            transition: background-color 0.3s; /* Transición de color de fondo */
+            margin-top: 30px; /* Añadir espacio arriba del botón */
+        }
+
+        .verify-btn:hover, .next-btn:hover {
+            background-color: #45a049; /* Color de fondo al pasar el ratón */
+        }
+
+        .hidden {
+            transform: translateY(100%); /* Moverlo fuera de la vista */
+        }
+
+
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="storyTitle" class="story-title">Título de la Historia</h1> <!-- Título de la historia -->
+        <p id="storyDescription" class="story-description">Descripción de la historia aquí.</p> <!-- Descripción de la historia -->
+        <div id="story" class="story">Contenido de la historia aquí.</div> <!-- Área donde se muestra la historia -->
+        <div class="options">
+            <!-- Botones de opción, generados dinámicamente -->
+            <button class="option-btn" id="option1">🐶</button>
+            <button class="option-btn" id="option2">🐱</button>
+            <button class="option-btn" id="option3">🐰</button>
+            <button class="option-btn" id="option4">🦁</button>
+        </div>
+        <div class="action-buttons">
+            <button id="verifyBtn" class="verify-btn">✅ Verificar</button> <!-- Botón para verificar la respuesta -->
+            <button id="nextBtn" class="next-btn hidden">➡️ Siguiente Historia</button> <!-- Botón para cargar la siguiente historia -->
+        </div>
+    </div>
+</div>
+
+
+<!-- Elementos de audio para interacciones -->
+<audio id="clickSound" src="https://www.soundjay.com/button/sounds/button-09.mp3"></audio>
+<audio id="correctSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+<audio id="wrongSound" src="https://www.soundjay.com/button/sounds/beep-07.mp3"></audio>
+<audio id="loseSound" src="https://www.soundjay.com/button/sounds/button-11.mp3"></audio> <!-- Nuevo sonido de perder -->
+
+
+<script>
+    // Arreglo que contiene las historias, títulos y descripciones
+    const stories = [
+    { title: "La Fuerza de Amistad", description: "Un conejito y una tortuga aprenden que la amistad puede superar cualquier obstáculo.", text: "En un bosque, Toby el conejito y Tula la tortuga se convirtieron en amigos. Un día, un gran árbol cayó, pero juntos lograron moverlo. Aprendieron que la amistad les daba fuerza.", correct: 0, options: ["🐇", "🐢", "🐍", "🐰"] },
+    { title: "La Belleza de la Diversidad", description: "Un loro aprende a apreciar la diversidad de sus amigos en la selva.", text: "Lucas el loro se dio cuenta de que cada ave en la selva tenía un color y canto especial. Al aprender sobre sus diferencias, se unió a todos y creó nuevos lazos de amistad.", correct: 1, options: ["🦜", "🦉", "🐦", "🦅"] },
+    { title: "El Valor de la Honestidad", description: "Una mariquita aprende que ser honesta trae más alegría que cualquier joya.", text: "Lila la mariquita encontró una joya brillante pero se sintió mal al quedársela. Decidió devolverla y al hacerlo, encontró una gran alegría en ser honesta.", correct: 2, options: ["💎", "🐞", "🌟", "🍀"] },
+    { title: "La Magia de Compartir", description: "Un niño descubre que compartir su felicidad multiplica la alegría.", text: "Pablo encontró una bolsa de caramelos y, en lugar de quedárselos, decidió compartirlos con sus amigos. Todos disfrutaron y se rieron juntos, aprendiendo que compartir es mágico.", correct: 3, options: ["🍬", "🍭", "🎉", "🍫"] },
+    { title: "El Poder de la Perseverancia", description: "Un ratón y una ardilla aprenden que la perseverancia puede llevarte a grandes alturas.", text: "Max el ratón soñaba con escalar una montaña. Aunque resbaló muchas veces, nunca se rindió. Con la ayuda de su amiga ardilla, finalmente llegó a la cima, aprendiendo que la perseverancia vale la pena.", correct: 0, options: ["🐭", "🐿️", "🐰", "🦔"] },
+    { title: "La Importancia de Escuchar", description: "Un elefante aprende que escuchar puede ser tan valioso como hablar.", text: "Eli el elefante siempre estaba demasiado ocupado para escuchar. Pero al prestar atención, descubrió que sus amigos tenían historias valiosas que compartir, y aprendió que escuchar es esencial.", correct: 1, options: ["🐘", "🦓", "🦒", "🐅"] },
+    { title: "La Fuerza del Trabajo en Equipo", description: "Un grupo de hormigas muestra que el trabajo en equipo puede lograr grandes cosas.", text: "Las hormigas decidieron construir un hogar para su reina. Al principio trabajaron solas, pero luego unieron sus esfuerzos y construyeron una hermosa casa. Aprendieron que juntas son más fuertes.", correct: 2, options: ["🐜", "🦗", "🐝", "🐞"] },
+    { title: "La Sabiduría de la Paciencia", description: "Un pez lento enseña que la paciencia trae recompensas inesperadas.", text: "Paco el pez siempre nadaba rápido en busca de burbujas. Un pez viejo le enseñó que nadar despacio le permitiría disfrutar del océano y conocer nuevos amigos. La paciencia le trajo alegría.", correct: 3, options: ["🐟", "🐠", "🐡", "🐬"] },
+    { title: "La Magia de los Sueños", description: "Una rana aprende que seguir sus sueños puede llevar a aventuras increíbles.", text: "Rita la rana soñaba con tocar la luna. Con la ayuda de una mariposa, aprendió que sus sueños son valiosos y que con esfuerzo puede alcanzar cualquier meta.", correct: 0, options: ["🐸", "🐛", "🦋", "🦙"] },
+    { title: "La Magia de la Generosidad", description: "Una golondrina descubre que al dar, también recibe alegría.", text: "Gala la golondrina decidió llevar regalos a sus amigos. Al compartir flores y cantos, trajo felicidad a todos y aprendió que la generosidad crea un ciclo de alegría.", correct: 1, options: ["🐦", "🎁", "🌸", "🎶"] },
+    { title: "La Belleza de la Amistad", description: "Ciro el canario organiza un concierto y aprende el valor de la amistad.", text: "Ciro el canario soñaba con tener muchos amigos. Al organizar un concierto en el jardín, logró unir a todos los animales y celebrar la amistad, descubriendo que juntos son más felices.", correct: 2, options: ["🎤", "🐦", "🎶", "🎼"] },
+    { title: "La Fuerza de la Imaginación", description: "Una niña descubre que la creatividad puede llevarla a mundos mágicos.", text: "Sofía encontró una caja mágica que le permitía crear cualquier cosa que imaginara. Junto a sus amigos, crearon un mundo de aventuras, aprendiendo que la imaginación no tiene límites.", correct: 3, options: ["🌈", "🦄", "🎨", "🏰"] },
+    { title: "La Importancia de Cuidar", description: "Una planta y los insectos aprenden que cuidar a los demás embellece el mundo.", text: "Pina la planta decidió proteger a un pequeño gusano del sol. Al unirse todos los insectos para cuidar su hogar, aprendieron que el cuidado mutuo embellece la vida.", correct: 0, options: ["🌿", "🐛", "🌼", "🐜"] },
+    { title: "El Valor de la Creatividad", description: "Tomás encuentra el poder de la creatividad y une a sus amigos.", text: "Tomás se encontró con un montón de papel y decidió crear. Junto a sus amigos, hicieron decoraciones hermosas para el parque, aprendiendo que ser creativo puede unir a las personas.", correct: 1, options: ["📄", "✂️", "🖌️", "🎨"] },
+    { title: "La Magia del Perdón", description: "Un tigre y un mono aprenden que el perdón puede restaurar la amistad.", text: "Tito el tigre se peleó con su amigo Momo. Después de sentirse solo, decidió pedir perdón. Al reconciliarse, aprendieron que el perdón es poderoso y puede sanar amistades.", correct: 2, options: ["🐅", "🐒", "🐾", "🦓"] },
+    { title: "El Poder de la Amabilidad", description: "Un pequeño ratón aprende que un gesto amable puede cambiar el día de alguien.", text: "Rico el ratón vio a un pájaro triste. Decidió compartir su comida con él. Al hacerlo, el pájaro sonrió y se sintió feliz. Rico aprendió que la amabilidad puede iluminar el día de otros.", correct: 0, options: ["🐭", "🐦", "🐰", "🐔"] },
+    { title: "La Fuerza de la Verdad", description: "Un perro y un gato descubren que la verdad fortalece las relaciones.", text: "Paco el perro y Lía la gata tenían un malentendido. Al hablar con sinceridad, se dieron cuenta de que eran mejores amigos. Aprendieron que la verdad es la base de una buena amistad.", correct: 1, options: ["🐶", "🐱", "🐾", "🐕"] },
+    { title: "La Magia del Respeto", description: "Un niño aprende que respetar a los demás trae armonía.", text: "Alejandro jugaba en el parque, pero no dejaba a los demás participar. Un día, se dio cuenta de que compartir el juego hacía felices a todos. Aprendió que el respeto es mágico.", correct: 2, options: ["🏞️", "🎮", "⚽", "👦"] },
+    { title: "La Belleza de la Naturaleza", description: "Una ardilla descubre la importancia de cuidar el medio ambiente.", text: "Suri la ardilla amaba jugar en el bosque. Un día, vio basura en su hogar. Junto a sus amigos, decidieron limpiarlo. Aprendieron que cuidar la naturaleza es esencial para todos.", correct: 3, options: ["🌳", "🐿️", "🏕️", "🍂"] },
+    { title: "El Valor de la Honestidad", description: "Una liebre aprende que ser honesta trae paz interior.", text: "Lia la liebre se encontró con una zanahoria deliciosa, pero le pertenecía a su amiga. Al devolverla, sintió una gran alegría. Aprendió que la honestidad es valiosa.", correct: 0, options: ["🐰", "🥕", "🍂", "🐇"] },
+    { title: "La Fuerza del Amor Familiar", description: "Un pato y su mamá descubren que el amor familiar supera cualquier desafío.", text: "Pablo el patito y su mamá se perdieron en el lago. Juntos, nadaron hasta encontrar el camino de regreso a casa. Aprendieron que el amor familiar siempre los guía.", correct: 1, options: ["🦆", "💖", "🏞️", "🌊"] },
+    { title: "La Importancia de Aprender", description: "Una tortuga muestra a su amigo cómo el aprendizaje puede abrir puertas.", text: "Tina la tortuga siempre leía. Un día, enseñó a su amigo el valor de la educación. Juntos descubrieron que aprender les abría un mundo lleno de posibilidades.", correct: 2, options: ["📚", "🐢", "🦋", "🐇"] },
+    { title: "La Belleza de la Creatividad", description: "Un loro y un niño crean arte juntos, aprendiendo que la creatividad no tiene límites.", text: "Lucas el loro y Miguel pintaron un mural juntos. Usaron colores brillantes y formas divertidas. Al finalizar, vieron que la creatividad los unía de maneras sorprendentes.", correct: 3, options: ["🦜", "🎨", "🌈", "🖌️"] },
+    { title: "La Magia de los Recuerdos", description: "Una abuela enseña a su nieto que los recuerdos son tesoros que siempre nos acompañan.", text: "Sofía escuchaba a su abuela contar historias de su infancia. Al aprender sobre su pasado, comprendió que los recuerdos son tesoros que viven en nuestros corazones.", correct: 0, options: ["👵", "📖", "🎒", "🏠"] },
+    { title: "El Valor de la Diversidad", description: "Un grupo de amigos de diferentes especies aprende a celebrar sus diferencias.", text: "En un bosque, animales de diferentes colores y tamaños se unieron para un festival. Al apreciar sus diferencias, aprendieron que la diversidad es hermosa y divertida.", correct: 1, options: ["🌈", "🐾", "🦓", "🐝"] }
+];
+
+    let currentStory = 0; // Índice de la historia actual
+    let selectedOption = null; // Opción seleccionada por el usuario
+
+    // Elementos del DOM
+    const storyTitleElem = document.getElementById('storyTitle');
+    const storyDescriptionElem = document.getElementById('storyDescription');
+    const storyElem = document.getElementById('story');
+    const optionButtons = Array.from(document.getElementsByClassName('option-btn'));
+    const verifyBtn = document.getElementById('verifyBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const clickSound = document.getElementById('clickSound');
+    const correctSound = document.getElementById('correctSound');
+    const wrongSound = document.getElementById('wrongSound');
+
+    // Función para cargar la historia actual
+    function loadStory() {
+        const story = stories[currentStory]; // Obtener historia actual
+        storyTitleElem.textContent = story.title; // Mostrar título de la historia
+        storyDescriptionElem.textContent = story.description; // Mostrar descripción de la historia
+        storyElem.textContent = story.text; // Mostrar texto de la historia
+        optionButtons.forEach((btn, index) => {
+            btn.textContent = story.options[index]; // Establecer texto de cada opción
+            btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
+            btn.disabled = false; // Habilitar botón
+        });
+        selectedOption = null; // Reiniciar opción seleccionada
+        verifyBtn.disabled = false; // Habilitar botón de verificación
+        nextBtn.classList.add("hidden"); // Ocultar botón de siguiente historia
+    }
+
+    // Agregar eventos a cada botón de opción
+    optionButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            clickSound.play(); // Reproducir sonido al hacer clic
+            selectedOption = index; // Establecer opción seleccionada
+            optionButtons.forEach(b => b.style.backgroundColor = "#eee"); // Reiniciar colores
+            btn.style.backgroundColor = "#add8e6"; // Resaltar opción seleccionada
+        });
+    });
+
+    // Evento para el botón de verificar respuesta
+    verifyBtn.addEventListener('click', () => {
+        if (selectedOption === null) return; // Salir si no se ha seleccionado ninguna opción
+        const story = stories[currentStory]; // Obtener historia actual
+        if (selectedOption === story.correct) { // Verificar respuesta correcta
+            correctSound.play(); // Reproducir sonido correcto
+            optionButtons[selectedOption].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+        } else {
+            wrongSound.play(); // Reproducir sonido incorrecto
+            optionButtons[selectedOption].style.backgroundColor = "#ffcccb"; // Resaltar opción incorrecta
+            optionButtons[story.correct].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+        }
+        verifyBtn.disabled = true; // Deshabilitar botón de verificación
+        nextBtn.classList.remove("hidden"); // Mostrar botón de siguiente historia
+    });
+
+    // Evento para el botón de siguiente historia
+    nextBtn.addEventListener('click', () => {
+        if (currentStory < stories.length - 1) { // Verificar si hay más historias
+            currentStory++; // Incrementar índice de historia
+            loadStory(); // Cargar nueva historia
+        } else {
+            alert("¡Has completado todas las historias!"); // Mensaje al completar todas las historias
+        }
+    });
+
+    loadStory(); // Cargar la primera historia al inicio
+
+
+</script>
+
+
+
+</body>
+</html>
+
+
