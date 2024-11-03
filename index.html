@@ -151,6 +151,53 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.footer {
+    background-color: #f2f4f8; /* Fondo suave */
+    padding: 30px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    width: 80px; /* Tamaño del logo */
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    margin-top: 20px;
+}
+
+.footer-btn {
+    background: linear-gradient(135deg, #FF8A65, #FFB74D); /* Degradado suave */
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.footer-btn:hover {
+    background: linear-gradient(135deg, #FF7043, #FFA726);
+    transform: scale(1.05);
+}
+
+.footer-text {
+    color: #555;
+    font-size: 0.9em;
+    margin-top: 15px;
+}
+
+
     
     </style>
 </head>
@@ -295,13 +342,18 @@
 
 
 <footer class="footer">
-    <p>© 2024 TuNombre. Todos los derechos reservados.</p>
-    <div class="social-media">
-        <a href="https://www.facebook.com" target="_blank">Facebook</a> |
-        <a href="https://www.twitter.com" target="_blank">Twitter</a> |
-        <a href="https://www.instagram.com" target="_blank">Instagram</a>
+    <div class="footer-content">
+        <img src="logo.png" alt="Logo de la Página" class="footer-logo"> <!-- Asegúrate de tener el logo en tu directorio -->
+        
+        <div class="footer-links">
+            <a href="https://preguntor.github.io/" target="_blank" class="footer-btn">Preguntor</a>
+            <a href="https://leymodulativa.github.io/leymodulativa/" target="_blank" class="footer-btn">Ley Modulativa</a>
+        </div>
+
+        <p class="footer-text">© 2024 Juegos Educativos. Diviértete aprendiendo con nosotros.</p>
     </div>
 </footer>
+
 
 </body>
 </html>
