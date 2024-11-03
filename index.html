@@ -175,45 +175,32 @@
         }
 
         .footer-btn {
-    background: linear-gradient(135deg, #FFB74D, #FF8A65); /* Degradado más suave */
-    color: white;
-    padding: 14px 30px; /* Mayor espacio para una mejor interacción */
-    margin: 5px;
-    border: none;
-    border-radius: 30px; /* Bordes más redondeados */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em; /* Aumento en el tamaño de fuente para mejor legibilidad */
-    display: inline-block;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.25); /* Sombra más sutil y elegante */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Añadido de transición de fondo */
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
+            background-color: #FFB74D; /* Color sólido sin degradado */
+            color: #fff; /* Color del texto blanco */
+            padding: 12px 25px; /* Espaciado cómodo */
+            margin: 5px; /* Espaciado entre botones */
+            border: none; /* Sin borde */
+            border-radius: 50px; /* Bordes más redondeados para un estilo suave */
+            text-decoration: none; /* Sin subrayado */
+            font-weight: bold; /* Negrita para resaltar */
+            font-size: 1em; /* Tamaño de fuente estándar */
+            display: inline-block; /* Alineación en línea */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+            transition: all 0.3s ease; /* Transición suave para todos los cambios */
+            cursor: pointer; /* Cambiar cursor a puntero */
+        }
+
+.footer-btn:hover {
+    background-color: #FF8A65; /* Cambio de color de fondo al pasar el mouse */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25); /* Aumento de sombra en hover */
+    transform: translateY(-2px); /* Ligeramente elevar el botón */
 }
 
-    .footer-btn::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 300%;
-        height: 300%;
-        background-color: rgba(255, 255, 255, 0.3); /* Mayor opacidad para un brillo más fuerte */
-        transition: all 0.6s ease;
-        border-radius: 50%;
-        transform: translate(-50%, -50%) scale(0);
-    }
+.footer-btn:active {
+    transform: translateY(1px); /* Efecto de presión al hacer clic */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Volver a sombra original al hacer clic */
+}
 
-    .footer-btn:hover {
-        transform: scale(1.1); /* Aumento de escala en hover para mayor impacto */
-        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4); /* Aumento de sombra más notable */
-        background: linear-gradient(135deg, #FF8A65, #FFB74D); /* Cambio de fondo para mayor efecto visual */
-    }
-
-    .footer-btn:hover::before {
-        transform: translate(-50%, -50%) scale(1); /* Efecto de brillo en hover */
-    }
 
 
      
