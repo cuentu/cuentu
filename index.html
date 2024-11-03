@@ -279,6 +279,16 @@
     });
 
     loadStory(); // Cargar la primera historia al inicio
+    // Función para obtener un índice aleatorio de historia
+    function getRandomStoryIndex() {
+        return Math.floor(Math.random() * stories.length);
+    }
+
+    // Evento para el botón de siguiente historia
+    nextBtn.addEventListener('click', () => {
+        currentStory = getRandomStoryIndex(); // Obtener un índice aleatorio de historia
+        loadStory(); // Cargar la historia aleatoria
+    });
 
 
 </script>
