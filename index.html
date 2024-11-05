@@ -247,7 +247,7 @@
 <script>
     // Arreglo que contiene las historias, títulos y descripciones
     const stories = [
-    { title: "La Fuerza de Amistad", description: "Un conejito y una tortuga aprenden que la amistad puede superar cualquier obstáculo.", text: "En un bosque, Toby el conejito y Tula la tortuga se convirtieron en amigos. Un día, un gran árbol cayó, pero juntos lograron moverlo. Aprendieron que la amistad les daba fuerza.", correct: 0, options: ["🐇", "🐢", "🐍", "🦃"] },
+    { title: "La Fuerza de Amistad", description: "Un conejito y una tortuga aprenden que la amistad puede superar cualquier obstáculo.", text: "En un bosque, Toby el conejito y Tula la tortuga se convirtieron en amigos. Un día, un gran árbol cayó, pero juntos lograron moverlo. Aprendieron que la amistad les daba fuerza.", question: "PREGUNTA", correct: 0, options: ["🐇", "🐢", "🐍", "🦃"] },
     { title: "La Belleza de la Diversidad", description: "Un loro aprende a apreciar la diversidad de sus amigos en la selva.", text: "Lucas el loro se dio cuenta de que cada ave en la selva tenía un color y canto especial. Al aprender sobre sus diferencias, se unió a todos y creó nuevos lazos de amistad.", correct: 0, options: ["🦜", "🦉", "🐦", "🦅"] },
     { title: "El Valor de la Honestidad", description: "Una mariquita aprende que ser honesta trae más alegría que cualquier joya.", text: "Lila la mariquita encontró una joya brillante pero se sintió mal al quedársela. Decidió devolverla y al hacerlo, encontró una gran alegría en ser honesta.", correct: 1, options: ["💎", "🐞", "🌟", "🍀"] },
     { title: "La Magia de Compartir", description: "Un niño descubre que compartir su felicidad multiplica la alegría.", text: "Pablo encontró una bolsa de caramelos y, en lugar de quedárselos, decidió compartirlos con sus amigos. Todos disfrutaron y se rieron juntos, aprendiendo que compartir es mágico.", correct: 0, options: ["🍬", "🍕", "🎉", "🍫"] },
@@ -255,7 +255,7 @@
     { title: "La Importancia de Escuchar", description: "Un elefante aprende que escuchar puede ser tan valioso como hablar.", text: "Eli el elefante siempre estaba demasiado ocupado para escuchar. Pero al prestar atención, descubrió que sus amigos tenían historias valiosas que compartir, y aprendió que escuchar es esencial.", correct: 0, options: ["🐘", "🦓", "🦒", "🐅"] },
     { title: "La Fuerza del Trabajo en Equipo", description: "Un grupo de hormigas muestra que el trabajo en equipo puede lograr grandes cosas.", text: "Las hormigas decidieron construir un hogar para su reina. Al principio trabajaron solas, pero luego unieron sus esfuerzos y construyeron una hermosa casa. Aprendieron que juntas son más fuertes.", correct: 0, options: ["🐜", "🦗", "🐝", "🐞"] },
     { title: "La Sabiduría de la Paciencia", description: "Un pez lento enseña que la paciencia trae recompensas inesperadas.", text: "Paco el pez siempre nadaba rápido en busca de burbujas. Un pez viejo le enseñó que nadar despacio le permitiría disfrutar del océano y conocer nuevos amigos. La paciencia le trajo alegría.", correct: 3, options: ["🐬", "🦈", "🐋", "🐟"] },
-    { title: "La Magia de los Sueños", description: "Una rana aprende que seguir sus sueños puede llevar a aventuras increíbles.", text: "Rita la rana soñaba con tocar la luna. Con la ayuda de una mariposa, aprendió que sus sueños son valiosos y que con esfuerzo puede alcanzar cualquier meta.", correct: 3, options: ["🦙", "🐛", "🦋", "🐸"] },
+    { title: "La Magia de los Sueños", description: "Una rana aprende que seguir sus sueños puede llevar a aventuras increíbles.", text: "Rita la rana soñaba con tocar la luna. Con la ayuda de una mariposa, aprendió que sus sueños son valiosos y que con esfuerzo puede alcanzar cualquier meta.", correct: 0, options: ["🦙", "🐛", "🦋", "🐸"] },
     { title: "La Magia de la Generosidad", description: "Una golondrina descubre que al dar, también recibe alegría.", text: "Gala la golondrina decidió llevar regalos a sus amigos. Al compartir flores y cantos, trajo felicidad a todos y aprendió que la generosidad crea un ciclo de alegría.", correct: 3, options: ["🦈", "🎁", "🌸", "🐦"] },
     { title: "La Belleza de la Amistad", description: "Ciro el canario organiza un concierto y aprende el valor de la amistad.", text: "Ciro el canario soñaba con tener muchos amigos. Al organizar un concierto en el jardín, logró unir a todos los animales y celebrar la amistad, descubriendo que juntos son más felices.", correct: 1, options: ["🎤", "🐦", "🎶", "🦃"] },
     { title: "La Fuerza de la Imaginación", description: "Una niña descubre que la creatividad puede llevarla a mundos mágicos.", text: "Sofía encontró una caja mágica que le permitía crear cualquier cosa que imaginara. Junto a sus amigos, crearon un mundo de aventuras, aprendiendo que la imaginación no tiene límites.", correct: 3, options: ["🌈", "🦄", "🎨", "👧"] },
@@ -270,18 +270,10 @@
     { title: "La Fuerza del Amor Familiar", description: "Un pato y su mamá descubren que el amor familiar supera cualquier desafío.", text: "Pablo el patito y su mamá se perdieron en el lago. Juntos, nadaron hasta encontrar el camino de regreso a casa. Aprendieron que el amor familiar siempre los guía.", correct: 1, options: ["🦧", "🦆", "🏞️", "🌊"] },
     { title: "La Importancia de Aprender", description: "Una tortuga muestra a su amigo cómo el aprendizaje puede abrir puertas.", text: "Tina la tortuga siempre leía. Un día, enseñó a su amigo el valor de la educación. Juntos descubrieron que aprender les abría un mundo lleno de posibilidades.", correct: 2, options: ["📚", "🐧", "🐢", "🐇"] },
     { title: "La Belleza de la Creatividad", description: "Un loro y un niño crean arte juntos, aprendiendo que la creatividad no tiene límites.", text: "Lucas el loro y Miguel pintaron un mural juntos. Usaron colores brillantes y formas divertidas. Al finalizar, vieron que la creatividad los unía de maneras sorprendentes.", correct: 3, options: ["🦐", "🎨", "🌈", "🦜"] },
-    { title: "La Magia de los Recuerdos", description: "Una abuela enseña a su nieto que los recuerdos son tesoros que siempre nos acompañan.", text: "Sofía escuchaba a su abuela contar historias de su infancia. Al aprender sobre su pasado, comprendió que los recuerdos son tesoros que viven en nuestros corazones.", correct: 3, options: ["👵", "📖", "🎒", "👧"] }, 
-    { title: "El valor del tiempo", description: "La importancia de escuchar y valorar las historias compartidas.", text: "En un pequeño pueblo, todos los días un anciano contaba historias bajo un árbol, pero nadie lo escuchaba. Un día, una tormenta derribó el árbol, y el pueblo se dio cuenta de lo que habían perdido. Desde entonces, cada historia fue valorada y recordada.",  correct: 1, options: ["🌳", "👴", "📚", "🏡"] },
-    { title: "El secreto de la amistad", description: "La verdadera amistad puede superar cualquier desacuerdo.", text: "Dos pájaros construyeron sus nidos cerca uno del otro, pero un día se pelearon y decidieron no hablarse más. Sin embargo, cuando un gato merodeó, se unieron para protegerse mutuamente.", correct: 0, options: ["🐦", "🤝", "🐱", "🏠"] },
-    { title: "La lección del río", description: "A veces, ayudar en exceso puede causar más daño que beneficio.", text: "Un río, al ver a una pequeña flor que se quejaba de no tener agua suficiente, decidió desbordarse y ahogarla. Al día siguiente, la flor se marchitó.", correct: 2, options: ["💧", "🌼", "🏞️", "🌪️"] },
-    { title: "El eco de la verdad", description: "Lo que damos al mundo, regresa a nosotros de alguna manera.", text: "Un viajero se encontraba perdido en un bosque y gritó pidiendo ayuda. Solo escuchó su propio eco. Al darse cuenta de que lo que decía era lo que escuchaba de vuelta, decidió hablar con amabilidad.", correct: 1, options: ["🌲", "👤", "🔊", "🦋"] },
-    { title: "El peso de las palabras", description: "Las acciones amables pueden tener un significado más profundo que el objeto en sí.", text: "Un niño recibió un regalo de cumpleaños que no le gustaba. Al no querer ofender a su amigo, lo aceptó con una sonrisa. Con el tiempo, aprendió a apreciar el gesto detrás del regalo.", correct: 0, options: ["🎁", "😃", "💔", "🎈"] },
-    { title: "La búsqueda del tesoro", description: "A veces, lo más valioso de una experiencia es lo que se vive en el camino.", text: "Un grupo de amigos decidió buscar un tesoro escondido. Al final del día, encontraron solo piedras brillantes. Sin embargo, se dieron cuenta de que el verdadero tesoro era la diversión y la risa compartida.", correct: 2, options: ["💎", "🎉", "🤝", "🤗"] },
-    { title: "El árbol generoso", description: "La generosidad siempre encuentra formas de retribuirse.", text: "Un árbol siempre daba sus frutos a un niño que venía a jugar. Cuando el niño creció, el árbol se sintió triste porque ya no lo visitaba. Un día, el hombre regresó buscando sombra, y el árbol se alegró de ayudarlo de nuevo.", correct: 0, options: ["🌳", "👶", "☀️", "🏡"] },
-    { title: "La mariposa y el río", description: "Dejar atrás los miedos puede llevarte a nuevas y hermosas experiencias.", text: "Una mariposa, asustada por la corriente, se aferró a una rama. Un pez le dijo que el río era su hogar y que debía aprender a confiar. Con valentía, la mariposa voló y descubrió la belleza del río desde arriba.", correct: 0, options: ["🦋", "🐠", "🌊", "🌸"] },
-    { title: "La carrera de los animales", description: "La perseverancia puede superar la velocidad en una competición.", text: "Los animales del bosque decidieron hacer una carrera. Todos competían, menos la tortuga, que avanzaba lentamente. Al final, el conejo, confiado en su rapidez, se quedó dormido y la tortuga ganó.", correct: 0, options: ["🐢", "🐇", "🏁", "🌲"] },
-    { title: "El secreto del jardín", description: "La belleza puede encontrarse en los lugares menos esperados.", text: "Una niña cuidaba un jardín y nunca se quejaba de las malas hierbas. Un día, vio que florecían hermosas flores entre ellas. Se dio cuenta de que incluso en lo imperfecto, había belleza.", correct: 3, options: ["🌺", "🌼", "👧", "🌿"] }
-];
+    { title: "La Magia de los Recuerdos", description: "Una abuela enseña a su nieto que los recuerdos son tesoros que siempre nos acompañan.", text: "Sofía escuchaba a su abuela contar historias de su infancia. Al aprender sobre su pasado, comprendió que los recuerdos son tesoros que viven en nuestros corazones.", correct: 3, options: ["👵", "📖", "🎒", "👧"] },
+    { title: "El Valor de la Diversidad", description: "Un grupo de amigos de diferentes especies aprende a celebrar sus diferencias.", text: "En un bosque mágico, donde los árboles susurran secretos, vivían animales de todos los colores y tamaños. Un día, decidieron organizar un gran festival para celebrar sus diferencias. Cada uno tenía una habilidad especial: el león podía rugir como un trueno, la mariposa iluminaba con sus alas brillantes, y el pez payaso hacía reír a todos con sus travesuras. A medida que los animales compartían sus talentos, el bosque se llenó de risas y música. Al final de la noche, comprendieron que la diversidad no solo es valiosa, ¡es lo que hace la vida emocionante y colorida!", correct: 0, options: ["🌈", "🐻", "🦓", "🐝"]
+}
+    ];
 
     let currentStory = 0; // Índice de la historia actual
     let selectedOption = null; // Opción seleccionada por el usuario
@@ -290,6 +282,7 @@
     const storyTitleElem = document.getElementById('storyTitle');
     const storyDescriptionElem = document.getElementById('storyDescription');
     const storyElem = document.getElementById('story');
+    const storyQuestionElem = document.getElementById('storyQuestion');
     const optionButtons = Array.from(document.getElementsByClassName('option-btn'));
     const verifyBtn = document.getElementById('verifyBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -303,6 +296,7 @@
         storyTitleElem.textContent = story.title; // Mostrar título de la historia
         storyDescriptionElem.textContent = story.description; // Mostrar descripción de la historia
         storyElem.textContent = story.text; // Mostrar texto de la historia
+        storyQuestionElem.textContent = story.question; // Mostrar la pregunta
         optionButtons.forEach((btn, index) => {
             btn.textContent = story.options[index]; // Establecer texto de cada opción
             btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
@@ -350,17 +344,6 @@
     });
 
     loadStory(); // Cargar la primera historia al inicio
-    // Función para obtener un índice aleatorio de historia
-    function getRandomStoryIndex() {
-        return Math.floor(Math.random() * stories.length);
-    }
-
-    // Evento para el botón de siguiente historia
-    nextBtn.addEventListener('click', () => {
-        currentStory = getRandomStoryIndex(); // Obtener un índice aleatorio de historia
-        loadStory(); // Cargar la historia aleatoria
-    });
-
 
 </script>
 
