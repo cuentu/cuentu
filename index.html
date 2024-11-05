@@ -219,7 +219,30 @@
             font-weight: bold;
         }
 
-     
+        .scoreboard {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .score {
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #wins {
+            color: #228B22; /* Verde, similar a la respuesta correcta */
+            background-color: #90ee90; /* Verde claro */
+        }
+
+        #losses {
+            color: #B22222; /* Rojo, similar a la respuesta incorrecta */
+            background-color: #ffcccb; /* Rojo claro */
+        }
+        
 
     
     </style>
@@ -243,6 +266,10 @@
             <button id="verifyBtn" class="verify-btn">✅ Verificar</button> <!-- Botón para verificar la respuesta -->
             <button id="nextBtn" class="next-btn hidden">➡️ Siguiente Historia</button> <!-- Botón para cargar la siguiente historia -->
         </div>
+    </div>
+    <div id="scoreboard" class="scoreboard">
+        <p id="wins" class="score">✅ Victorias: 0</p>
+        <p id="losses" class="score">❌ Derrotas: 0</p>
     </div>
 </div>
 
@@ -375,6 +402,33 @@
 
     // Llamar a la función para cargar una historia aleatoria al inicio
     loadRandomStory();
+
+    let winsCount = 0; // Contador de victorias
+let lossesCount = 0; // Contador de derrotas
+
+// Referencias a los elementos de puntuación en el DOM
+const winsElem = document.getElementById('wins');
+const lossesElem = document.getElementById('losses');
+
+    verifyBtn.addEventListener('click', () => {
+        if (selectedOption === null) return; // Salir si no se ha seleccionado ninguna opción
+        const story = stories[currentStory]; // Obtener historia actual
+        if (selectedOption === story.correct) { // Verificar respuesta correcta
+            correctSound.play(); // Reproducir sonido correcto
+            optionButtons[selectedOption].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+            winsCount++; // Incrementar victorias
+            winsElem.textContent = `✅ Victorias: ${winsCount}`;
+        } else {
+            wrongSound.play(); // Reproducir sonido incorrecto
+            optionButtons[selectedOption].style.backgroundColor = "#ffcccb"; // Resaltar opción incorrecta
+            optionButtons[story.correct].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+            lossesCount++; // Incrementar derrotas
+            lossesElem.textContent = `❌ Derrotas: ${lossesCount}`;
+        }
+        verifyBtn.disabled = true; // Deshabilitar botón de verificación
+        nextBtn.classList.remove("hidden"); // Mostrar botón de siguiente historia
+    });
+
 
 
 </script>
