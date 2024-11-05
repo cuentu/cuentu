@@ -309,132 +309,130 @@
     { title: "23. La Magia de los Recuerdos", description: "Una abuela enseña a su nieto que los recuerdos son tesoros que siempre nos acompañan.", text: "Sofía escuchaba a su abuela contar historias de su infancia. Al aprender sobre su pasado, comprendió que los recuerdos son tesoros que viven en nuestros corazones.", question:"¿Quién escuchó historias de la infancia de su abuela y aprendió sobre los recuerdos?", correct: 3, options: ["👵", "📖", "🎒", "👧"] },
     { title: "24. La Lección de la Amistad", description: "Caperucita Roja descubre que no todos son tan amigables como parecen.", text: "Caperucita Roja iba camino a casa de su abuela cuando se encontró con un lobo que le hizo preguntas. Ella pensaba que era amable, pero pronto descubrió que no debía confiar en todos.", question: "¿A quién visitaba Caperucita cuando se encontró con el lobo?", correct: 1, options: ["🐺", "👵", "🐾", "🌲"] },
     { title: "25. La Casa Más Fuerte", description: "Los tres cerditos descubren que el esfuerzo vale la pena.", text: "Tres cerditos construyeron casas distintas: una de paja, otra de madera y otra de ladrillos. Cuando llegó el lobo, las primeras dos cayeron, pero la de ladrillos resistió.", question: "¿Qué casa resistió al lobo?", correct: 2, options: ["🌾", "🌳", "🧱", "🐷"]}, 
-    {title: "26. La Rosa Especial", description: "El Principito descubre que el amor es lo que hace especial a su rosa única.", text: "El Principito cuidaba de su rosa con cariño, pero al conocer otras flores en su viaje, comprendió que su rosa era especial porque la amaba profundamente.", question: "¿Por qué la rosa del Principito era especial para él?", correct: 3, options: ["🌹", "⭐", "🦈", "♥️"]}
+    { title: "26. La Rosa Especial", description: "El Principito descubre que el amor es lo que hace especial a su rosa única.", text: "El Principito cuidaba de su rosa con cariño, pero al conocer otras flores en su viaje, comprendió que su rosa era especial porque la amaba profundamente.", question: "¿Por qué la rosa del Principito era especial para él?", correct: 3, options: ["🌹", "⭐", "🦈", "♥️"]}
   
 ];
 
-    let currentStory = 0; // Índice de la historia actual
-    let selectedOption = null; // Opción seleccionada por el usuario
+let currentStory = 0; // Índice de la historia actual
+let selectedOption = null; // Opción seleccionada por el usuario
 
-    // Elementos del DOM
-    const storyTitleElem = document.getElementById('storyTitle');
-    const storyDescriptionElem = document.getElementById('storyDescription');
-    const storyElem = document.getElementById('story');
-    const storyQuestionElem = document.getElementById('storyQuestion');
-    const optionButtons = Array.from(document.getElementsByClassName('option-btn'));
-    const verifyBtn = document.getElementById('verifyBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const clickSound = document.getElementById('clickSound');
-    const correctSound = document.getElementById('correctSound');
-    const wrongSound = document.getElementById('wrongSound');
+// Elementos del DOM
+const storyTitleElem = document.getElementById('storyTitle');
+const storyDescriptionElem = document.getElementById('storyDescription');
+const storyElem = document.getElementById('story');
+const storyQuestionElem = document.getElementById('storyQuestion');
+const optionButtons = Array.from(document.getElementsByClassName('option-btn'));
+const verifyBtn = document.getElementById('verifyBtn');
+const nextBtn = document.getElementById('nextBtn');
+const clickSound = document.getElementById('clickSound');
+const correctSound = document.getElementById('correctSound');
+const wrongSound = document.getElementById('wrongSound');
 
-    // Función para cargar la historia actual
-    function loadStory() {
-        const story = stories[currentStory]; // Obtener historia actual
-        storyTitleElem.textContent = story.title; // Mostrar título de la historia
-        storyDescriptionElem.textContent = story.description; // Mostrar descripción de la historia
-        storyElem.textContent = story.text; // Mostrar texto de la historia
-        storyQuestionElem.textContent = story.question; // Mostrar la pregunta
-        optionButtons.forEach((btn, index) => {
-            btn.textContent = story.options[index]; // Establecer texto de cada opción
-            btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
-            btn.disabled = false; // Habilitar botón
-        });
-        selectedOption = null; // Reiniciar opción seleccionada
-        verifyBtn.disabled = false; // Habilitar botón de verificación
-        nextBtn.classList.add("hidden"); // Ocultar botón de siguiente historia
-    }
-
-    // Agregar eventos a cada botón de opción
+// Función para cargar la historia actual
+function loadStory() {
+    const story = stories[currentStory]; // Obtener historia actual
+    storyTitleElem.textContent = story.title; // Mostrar título de la historia
+    storyDescriptionElem.textContent = story.description; // Mostrar descripción de la historia
+    storyElem.textContent = story.text; // Mostrar texto de la historia
+    storyQuestionElem.textContent = story.question; // Mostrar la pregunta
     optionButtons.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            clickSound.play(); // Reproducir sonido al hacer clic
-            selectedOption = index; // Establecer opción seleccionada
-            optionButtons.forEach(b => b.style.backgroundColor = "#eee"); // Reiniciar colores
-            btn.style.backgroundColor = "#add8e6"; // Resaltar opción seleccionada
-        });
+        btn.textContent = story.options[index]; // Establecer texto de cada opción
+        btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
+        btn.disabled = false; // Habilitar botón
     });
+    selectedOption = null; // Reiniciar opción seleccionada
+    verifyBtn.disabled = false; // Habilitar botón de verificación
+    nextBtn.classList.add("hidden"); // Ocultar botón de siguiente historia
+}
 
-    // Evento para el botón de verificar respuesta
-    verifyBtn.addEventListener('click', () => {
-        if (selectedOption === null) return; // Salir si no se ha seleccionado ninguna opción
-        const story = stories[currentStory]; // Obtener historia actual
-        if (selectedOption === story.correct) { // Verificar respuesta correcta
-            correctSound.play(); // Reproducir sonido correcto
-            optionButtons[selectedOption].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
-        } else {
-            wrongSound.play(); // Reproducir sonido incorrecto
-            optionButtons[selectedOption].style.backgroundColor = "#ffcccb"; // Resaltar opción incorrecta
-            optionButtons[story.correct].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
-        }
-        verifyBtn.disabled = true; // Deshabilitar botón de verificación
-        nextBtn.classList.remove("hidden"); // Mostrar botón de siguiente historia
+// Agregar eventos a cada botón de opción
+optionButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        clickSound.play(); // Reproducir sonido al hacer clic
+        selectedOption = index; // Establecer opción seleccionada
+        optionButtons.forEach(b => b.style.backgroundColor = "#eee"); // Reiniciar colores
+        btn.style.backgroundColor = "#add8e6"; // Resaltar opción seleccionada
     });
+});
 
-    // Evento para el botón de siguiente historia
-    nextBtn.addEventListener('click', () => {
-        if (currentStory < stories.length - 1) { // Verificar si hay más historias
-            currentStory++; // Incrementar índice de historia
-            loadStory(); // Cargar nueva historia
-        } else {
-            alert("¡Has completado todas las historias!"); // Mensaje al completar todas las historias
-        }
-    });
-
-    loadStory(); // Cargar la primera historia al inicio
-
-    // Función para cargar una historia aleatoria
-    function loadRandomStory() {
-        // Mezclar el arreglo de historias
-        const shuffledStories = stories.sort(() => Math.random() - 0.5);
-        // Seleccionar la primera historia del arreglo mezclado
-        currentStory = 0; // Reiniciar el índice de la historia actual
-        const story = shuffledStories[currentStory]; // Obtener la historia aleatoria
-        // Mostrar la historia
-        storyTitleElem.textContent = story.title; // Mostrar título
-        storyDescriptionElem.textContent = story.description; // Mostrar descripción
-        storyElem.textContent = story.text; // Mostrar texto de la historia
-        storyQuestionElem.textContent = story.question; // Mostrar pregunta
-        optionButtons.forEach((btn, index) => {
-            btn.textContent = story.options[index]; // Establecer texto de cada opción
-            btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
-            btn.disabled = false; // Habilitar botón
-        });
-        selectedOption = null; // Reiniciar opción seleccionada
-        verifyBtn.disabled = false; // Habilitar botón de verificación
-        nextBtn.classList.add("hidden"); // Ocultar botón de siguiente historia
+// Evento para el botón de verificar respuesta
+verifyBtn.addEventListener('click', () => {
+    if (selectedOption === null) return; // Salir si no se ha seleccionado ninguna opción
+    const story = stories[currentStory]; // Obtener historia actual
+    if (selectedOption === story.correct) { // Verificar respuesta correcta
+        correctSound.play(); // Reproducir sonido correcto
+        optionButtons[selectedOption].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+    } else {
+        wrongSound.play(); // Reproducir sonido incorrecto
+        optionButtons[selectedOption].style.backgroundColor = "#ffcccb"; // Resaltar opción incorrecta
+        optionButtons[story.correct].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
     }
+    verifyBtn.disabled = true; // Deshabilitar botón de verificación
+    nextBtn.classList.remove("hidden"); // Mostrar botón de siguiente historia
+});
 
-    // Llamar a la función para cargar una historia aleatoria al inicio
-    loadRandomStory();
+// Evento para el botón de siguiente historia
+nextBtn.addEventListener('click', () => {
+    if (currentStory < stories.length - 1) { // Verificar si hay más historias
+        currentStory++; // Incrementar índice de historia
+    } else {
+        currentStory = 0; // Reiniciar índice para volver a empezar
+    }
+    loadStory(); // Cargar nueva historia
+});
 
-    let winsCount = 0; // Contador de victorias
+loadStory(); // Cargar la primera historia al inicio
+
+// Función para cargar una historia aleatoria
+function loadRandomStory() {
+    // Mezclar el arreglo de historias
+    const shuffledStories = stories.sort(() => Math.random() - 0.5);
+    // Seleccionar la primera historia del arreglo mezclado
+    currentStory = 0; // Reiniciar el índice de la historia actual
+    const story = shuffledStories[currentStory]; // Obtener la historia aleatoria
+    // Mostrar la historia
+    storyTitleElem.textContent = story.title; // Mostrar título
+    storyDescriptionElem.textContent = story.description; // Mostrar descripción
+    storyElem.textContent = story.text; // Mostrar texto de la historia
+    storyQuestionElem.textContent = story.question; // Mostrar pregunta
+    optionButtons.forEach((btn, index) => {
+        btn.textContent = story.options[index]; // Establecer texto de cada opción
+        btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
+        btn.disabled = false; // Habilitar botón
+    });
+    selectedOption = null; // Reiniciar opción seleccionada
+    verifyBtn.disabled = false; // Habilitar botón de verificación
+    nextBtn.classList.add("hidden"); // Ocultar botón de siguiente historia
+}
+
+// Llamar a la función para cargar una historia aleatoria al inicio
+loadRandomStory();
+
+let winsCount = 0; // Contador de victorias
 let lossesCount = 0; // Contador de derrotas
 
 // Referencias a los elementos de puntuación en el DOM
 const winsElem = document.getElementById('wins');
 const lossesElem = document.getElementById('losses');
 
-    verifyBtn.addEventListener('click', () => {
-        if (selectedOption === null) return; // Salir si no se ha seleccionado ninguna opción
-        const story = stories[currentStory]; // Obtener historia actual
-        if (selectedOption === story.correct) { // Verificar respuesta correcta
-            correctSound.play(); // Reproducir sonido correcto
-            optionButtons[selectedOption].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
-            winsCount++; // Incrementar victorias
-            winsElem.textContent = `✅ Victorias: ${winsCount}`;
-        } else {
-            wrongSound.play(); // Reproducir sonido incorrecto
-            optionButtons[selectedOption].style.backgroundColor = "#ffcccb"; // Resaltar opción incorrecta
-            optionButtons[story.correct].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
-            lossesCount++; // Incrementar derrotas
-            lossesElem.textContent = `❌ Derrotas: ${lossesCount}`;
-        }
-        verifyBtn.disabled = true; // Deshabilitar botón de verificación
-        nextBtn.classList.remove("hidden"); // Mostrar botón de siguiente historia
-    });
-
-
+verifyBtn.addEventListener('click', () => {
+    if (selectedOption === null) return; // Salir si no se ha seleccionado ninguna opción
+    const story = stories[currentStory]; // Obtener historia actual
+    if (selectedOption === story.correct) { // Verificar respuesta correcta
+        correctSound.play(); // Reproducir sonido correcto
+        optionButtons[selectedOption].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+        winsCount++; // Incrementar victorias
+        winsElem.textContent = `✅ Victorias: ${winsCount}`;
+    } else {
+        wrongSound.play(); // Reproducir sonido incorrecto
+        optionButtons[selectedOption].style.backgroundColor = "#ffcccb"; // Resaltar opción incorrecta
+        optionButtons[story.correct].style.backgroundColor = "#90ee90"; // Resaltar opción correcta
+        lossesCount++; // Incrementar derrotas
+        lossesElem.textContent = `❌ Derrotas: ${lossesCount}`;
+    }
+    verifyBtn.disabled = true; // Deshabilitar botón de verificación
+    nextBtn.classList.remove("hidden"); // Mostrar botón de siguiente historia
+});
 
 </script>
 
