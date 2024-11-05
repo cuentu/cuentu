@@ -361,6 +361,32 @@
 
     loadStory(); // Cargar la primera historia al inicio
 
+    // Función para cargar una historia aleatoria
+    function loadRandomStory() {
+        // Mezclar el arreglo de historias
+        const shuffledStories = stories.sort(() => Math.random() - 0.5);
+        // Seleccionar la primera historia del arreglo mezclado
+        currentStory = 0; // Reiniciar el índice de la historia actual
+        const story = shuffledStories[currentStory]; // Obtener la historia aleatoria
+        // Mostrar la historia
+        storyTitleElem.textContent = story.title; // Mostrar título
+        storyDescriptionElem.textContent = story.description; // Mostrar descripción
+        storyElem.textContent = story.text; // Mostrar texto de la historia
+        storyQuestionElem.textContent = story.question; // Mostrar pregunta
+        optionButtons.forEach((btn, index) => {
+            btn.textContent = story.options[index]; // Establecer texto de cada opción
+            btn.style.backgroundColor = "#eee"; // Reiniciar color de fondo
+            btn.disabled = false; // Habilitar botón
+        });
+        selectedOption = null; // Reiniciar opción seleccionada
+        verifyBtn.disabled = false; // Habilitar botón de verificación
+        nextBtn.classList.add("hidden"); // Ocultar botón de siguiente historia
+    }
+
+    // Llamar a la función para cargar una historia aleatoria al inicio
+    loadRandomStory();
+
+
 </script>
 
 
